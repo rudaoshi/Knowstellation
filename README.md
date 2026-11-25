@@ -277,6 +277,7 @@ For frontend checks, manually verify:
 ## Deployment Notes
 
 - Deploy the Vite frontend as static assets.
+- For a static host under a path such as `/knowstellation/`, build with `VITE_LLM_STATIC_ONLY=true npm run build -- --base=/knowstellation/` and publish `dist/` at that path. Subpath builds use hash routes so links to chapters and graphs work after reloading on a static host.
 - Deploy `api/llm.js` or an equivalent server-side route at `/api/llm`.
 - Configure `DEEPSEEK_API_KEY` and `DEEPSEEK_API_BASE` only in the server environment.
 - Keep `public/data` in sync with the latest generated data.

@@ -17,6 +17,7 @@ import {
   buildStorylineTransitionText,
 } from '../features/learning/storylineLearningCopy';
 import { DEFAULT_LANGUAGE, formatChapterLabel, formatSectionLabel, getUiCopy } from '../shared/utils/uiCopy';
+import { publicPath } from '../shared/utils/publicPath';
 import './StorylinePage.css';
 
 interface StorylinePageProps {
@@ -371,7 +372,7 @@ export function StorylinePage({ data }: StorylinePageProps) {
               {selectedStep?.image ? (
                 <div className="storyline-frame">
                   <div className="storyline-frame__inner">
-                    <img src={selectedStep.image} alt={selectedStep.image_caption || ''} />
+                    <img src={publicPath(selectedStep.image)} alt={selectedStep.image_caption || ''} />
                     {selectedStep.image_caption ? (
                       <div className="storyline-frame__caption">{selectedStep.image_caption}</div>
                     ) : null}

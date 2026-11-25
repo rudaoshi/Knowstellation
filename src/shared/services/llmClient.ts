@@ -1,5 +1,6 @@
 import type { FormulaPrerequisite, SearchFormula, StorylineEntry, StorylineStep } from '../types/formula';
 import type { LanguageCode } from '../types/learning';
+import { publicPath } from '../utils/publicPath.ts';
 import { compressTextToShortLabel } from '../utils/symbolAnnotation.ts';
 
 const LLM_ENDPOINT = '/api/llm';
@@ -654,7 +655,7 @@ function isStaticLlmCache(value: unknown): value is StaticLlmCache {
 async function loadStaticCache(fetchImpl: typeof fetch = fetch): Promise<StaticLlmCache | null> {
   if (typeof fetchImpl !== 'function') return null;
   if (!staticCachePromise) {
-    staticCachePromise = fetchImpl(STATIC_CACHE_URL)
+    staticCachePromise = fetchImpl(publicPath(STATIC_CACHE_URL))
       .then(async (response) => {
         if (!response.ok) return null;
         const payload = await response.json();

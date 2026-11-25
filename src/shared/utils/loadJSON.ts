@@ -1,6 +1,8 @@
+import { publicPath } from './publicPath.ts';
+
 export async function loadJSON<T>(url: string, signal?: AbortSignal): Promise<T> {
   try {
-    const response = await fetch(url, { signal });
+    const response = await fetch(publicPath(url), { signal });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
